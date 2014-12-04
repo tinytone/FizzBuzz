@@ -1,0 +1,14 @@
+The following NuGet Packages were installed:
+
+------------------------------------------------------
+For Rhino Mocks
+------------------------------------------------------
+
+Install-Package RhinoMocks -Version 3.6.1
+
+------------------------------------------------------
+For Structure Map
+------------------------------------------------------
+
+Install-Package StructureMap.MVC5
+

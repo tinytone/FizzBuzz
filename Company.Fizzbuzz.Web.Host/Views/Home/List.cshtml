@@ -1,0 +1,44 @@
+﻿@model Company.Fizzbuzz.Web.Host.Models.FizzBuzzViewModel
+@using Company.Fizzbuzz.Web.Host.HTMLHelpers
+
+@{
+    ViewBag.Title = "Fizz Buzz Demo";
+}
+
+@using (Html.BeginForm("List", "Home"))
+{
+    <div class="container">
+        <h1>Fizz Buzz</h1>
+
+        @if (Model != null && Model.FizzBuzzEntriesExist)
+        {
+            <h4>Values</h4>
+
+            foreach (var fizzBuzzEntry in Model.FizzBuzzEntries)
+            {
+                <div class="row">
+                    <div class="col-sm-2">
+                        @fizzBuzzEntry.ToString()
+                    </div>
+                </div>
+            }
+
+            <div class="pager">
+                @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", "Home", new { totalCount = Model.PagingInfo.TotalItems.ToString(), page = x }))
+            </div>
+        }
+        else
+        {
+            @Html.ValidationSummary()
+        }
+
+        <fieldset>
+            <label for="totalCount">Number of Fizz Buzz Entries to Retrieve</label>
+            <input type="text" name="totalCount" id="totalCount" class="form-control" />
+            <br />
+            <input type="submit" value="Go" class="btn btn-primary" />
+        </fieldset>
+
+    </div>
+
+}
